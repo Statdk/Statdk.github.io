@@ -1,0 +1,155 @@
+:root {
+  --color-bg: #282a36;
+  --color-text-fg: #d4d4d1;
+  --color-text-bg: #bcbfd0;
+  /* #565a74 */
+  --color-purple: #bd93f9;
+}
+
+/*All Styling*/
+
+html {
+  scrollbar-width: thin;
+  overflow-y: scroll;
+}
+
+html,
+body {
+  color: var(--color-text-fg);
+  background-color: var(--color-bg);
+  font-family: Consolas;
+}
+
+h1 {
+  font-size: 3em;
+  text-align: center;
+}
+
+.nav-link {
+  color: var(--color-purple) !important;
+}
+.nav-link:hover,
+.nav-link:focus {
+  text-decoration: underline !important;
+}
+.nav-link:active {
+  color: #000000 !important;
+  background-color: #984effff !important;
+}
+.bg-dark {
+  background-color: #1d1e27 !important;
+}
+
+a:link,
+a:visited {
+  color: var(--color-purple);
+  font-style: normal;
+}
+a:hover,
+a:focus {
+  background-color: #984eff2d;
+}
+a:active {
+  color: #000000;
+  background-color: #984effff;
+}
+
+.mycontainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: auto;
+  gap: 20px;
+  padding: 50px;
+  margin: 50px;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+  /* border: var(--color-text-bg) solid 1px; */
+}
+
+@media (max-width: 800px) {
+  .mycontainer {
+    margin: 10px;
+  }
+
+  .mycontainer div img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.homeCards {
+  width: 50%;
+  margin: auto;
+
+  /* display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-auto-rows: 15em; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.infoCard {
+  height: auto;
+  min-width: 13em;
+  width: auto;
+  max-width: 380px;
+
+  margin: 15px;
+  padding: 30px;
+
+  border: black 1px solid;
+  border-radius: 1.5em;
+  box-shadow: 0 0 10px 1px #000000aa;
+}
+.infoCard h2 {
+  font-size: 1.5em;
+
+  width: auto;
+  border-bottom: 2px solid var(--color-purple);
+}
+
+footer {
+  color: var(--color-text-bg);
+  width: fit-content;
+  border-top: 1px solid var(--color-text-bg);
+  padding: 5px;
+}
+
+li {
+  list-style: "- ";
+}
+
+nav ul li {
+  list-style: "";
+}
+
+input[type="text"],
+input[type="number"] {
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  color: var(--color-text-fg);
+  background-color: var(--color-bg);
+}
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: var(--color-purple) solid 3px;
+}
+
+button {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  color: var(--color-purple);
+  background-color: var(--color-bg);
+}
+button:hover,
+button:focus {
+  background-color: #984eff2d;
+}
+button:active {
+  color: black;
+  background-color: #984effff;
+}

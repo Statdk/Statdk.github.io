@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MHW Loadouts</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="./MHWLoadout.css" />
+    <script src="/common.js" defer></script>
+    <script type="module" src="./index.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+          aria-controls="mainNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav" id="navBar"></ul>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <h1>Loadout</h1>
+      <div class="MHW_ControlContainerUpper">
+        <input type="text" placeholder="Enter a name" id="newSaveName" />
+        <button id="saveBtn">Save <i class="bi bi-download"></i></button>
+        <button
+          id="settingsBtn"
+          title='"You thought that was a decorative line, but it was I, the settings panel!"'
+        >
+          Settings <i class="bi bi-gear"></i>
+        </button>
+      </div>
+      <div class="MHW_ControlSettings" id="settingsPanel">
+        <label for="Male">Male Armor</label>
+        <input type="radio" name="armorType" value="Male" id="Male" checked />
+        <label for="Female">Female Armor</label>
+        <input type="radio" name="armorType" value="Female" id="Female" />
+        <button id="reloadBtn">
+          Reset All <i class="bi bi-arrow-clockwise"></i>
+        </button>
+      </div>
+      <div class="MHW_ControlContainerLower">
+        <select id="savedList"></select>
+        <button id="loadBtn">Load <i class="bi bi-folder2-open"></i></button>
+        <button id="deleteBtn">Delete <i class="bi bi-trash"></i></button>
+      </div>
+      <div class="mycontainer" id="gridContainer">
+        <div class="MHW_MainGrid-container" id="mainGrid">
+          <div class="MHW_MainGrid-equipment">
+            <div class="MHW_MainGrid-equipment-item" id="head">
+              <img id="headIMG" />
+              <ul id="headSTATS"></ul>
+            </div>
+            <div class="MHW_MainGrid-equipment-item" id="chest">
+              <img id="chestIMG" />
+              <ul id="chestSTATS"></ul>
+            </div>
+            <div class="MHW_MainGrid-equipment-item" id="gloves">
+              <img id="glovesIMG" />
+              <ul id="glovesSTATS"></ul>
+            </div>
+            <div class="MHW_MainGrid-equipment-item" id="waist">
+              <img id="waistIMG" />
+              <ul id="waistSTATS"></ul>
+            </div>
+            <div class="MHW_MainGrid-equipment-item" id="legs">
+              <img id="legsIMG" />
+              <ul id="legsSTATS"></ul>
+            </div>
+          </div>
+          <div class="MHW_MainGrid-search" style="width: 25em">
+            <div style="margin-bottom: 5px">
+              <input type="text" id="searchEquipName" placeholder="Name" />
+              <button class="MHW_MainGrid-searchBtn" id="searchEquipBtn">
+                Search <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div>
+              Rarity:
+              <input
+                class="MHW_MainGrid-rarityNum"
+                type="number"
+                id="searchEquipRarity"
+                placeholder="0-12"
+                min="1"
+                max="7"
+              />
+            </div>
+            <div class="MHW_MainGrid-searchResult" id="searchResult">
+              <div class="MHW_MainGrid-searchResult-item"></div>
+            </div>
+          </div>
+          <div class="MHW_MainGrid-stats" id="statusBody" style="width: 25em">
+            <div>
+              Defense:
+              <span class=".MHW_MainGrid-stats-total" id="defenseTotal"></span>
+            </div>
+            <div>
+              <div>Resistances:</div>
+              <div id="resistTable"></div>
+            </div>
+            <div>
+              <div>Skills:</div>
+              <div id="skillList"></div>
+            </div>
+            <div>
+              <div>Crafting Materials:</div>
+              <div id="materialsList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </main>
+  </body>
+</html>
