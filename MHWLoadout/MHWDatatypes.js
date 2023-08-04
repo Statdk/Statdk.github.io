@@ -1,7 +1,13 @@
 import { DataBase } from "./MHWControllers.js";
 import { Default } from "./MHWDefaultLoad.js";
 
+/**
+ * Various constants related to MHW
+ */
 class DataTypes {
+  /**
+   * Element names to CSS color
+   */
   static elementColors = {
     fire: "red",
     water: "blue",
@@ -14,13 +20,19 @@ class DataTypes {
     paralysis: "yellow",
     stun: "khaki",
   };
+  /**
+   * Resistance shorthand to CSS color
+   */
   static resistColor = {
-    Fi: DataTypes.elementColors.fire,
-    Wa: DataTypes.elementColors.water,
-    Ic: DataTypes.elementColors.ice,
-    Th: DataTypes.elementColors.thunder,
-    Dr: DataTypes.elementColors.dragon,
+    Fi: this.elementColors.fire,
+    Wa: this.elementColors.water,
+    Ic: this.elementColors.ice,
+    Th: this.elementColors.thunder,
+    Dr: this.elementColors.dragon,
   };
+  /**
+   * Resistance name to shorthand
+   */
   static resistDisplay = {
     fire: "Fi",
     water: "Wa",
@@ -28,6 +40,9 @@ class DataTypes {
     thunder: "Th",
     dragon: "Dr",
   };
+  /**
+   * List of all armor slots
+   */
   static bodySections = ["head", "chest", "gloves", "waist", "legs"];
 }
 
@@ -43,8 +58,18 @@ class Armor {
   id;
   data;
 
+  /**
+   * Returns the resistance of this object to a particular element
+   * @param {"fire" | "water" | "ice" | "thunder" | "dragon"} type Element to check resistance.
+   * @returns {number} Elemental resistance
+   */
   getResistance(type) {
-    return this.data.resistances[type];
+    try {
+      return this.data.resistances[type];
+    } catch (err) {
+      console.error(err);
+      return 0;
+    }
   }
 
   /**
@@ -106,7 +131,8 @@ class Armor {
  */
 class Body {
   /**
-   * @param {{}} bodyData data from cookie
+   * Create a new body object; optionally with data.
+   * @param {{}} bodyData Data to fill with
    */
   constructor(bodyData = undefined) {
     if (bodyData !== undefined) {
@@ -254,11 +280,10 @@ class Body {
  */
 class Loadout {
   /**
-   * @param {Body} bodyData data from cookie storage
+   * @param {Body} bodyData data from storage
    */
   constructor(data = undefined) {
     if (data !== undefined) {
-      //Copy data from cookie
       this.body = new Body(data.body);
     } else {
       this.body = new Body(Default.body);

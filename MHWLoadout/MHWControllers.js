@@ -22,6 +22,7 @@ class DataBase {
 
     return this.#fetchDB(connectionURL);
   }
+
   /**
    * Searches for and returns several equipment entries in an array.
    * @param {["armor"]} type Equipment type
@@ -43,6 +44,7 @@ class DataBase {
 
     return this.#fetchDB(connectionURL);
   }
+
   static async #fetchDB(connectionURL) {
     let data;
 
@@ -64,14 +66,15 @@ class DataBase {
  */
 class Search {
   /**
-   *
-   * @param {MHW.Loadout} Hunter
-   * @param {*} nameID
-   * @param {*} rarityID
-   * @param {*} resultID
+   * Connect the search controller to various inputs and an output.
+   * @param {MHW.Loadout} Hunter Reference to a current loadout.
+   * @param {string} nameID ID of a name filter text input.
+   * @param {string} rarityID ID of a rarity filter number input.
+   * @param {string} resultID ID of a container to fill
+   * with HTML mini card search results.
    */
   constructor(Hunter, nameID, rarityID, resultID) {
-    this.#Hunter = Hunter; // Reference to the current hunter for comparison
+    this.#Hunter = Hunter;
     this.#name = document.getElementById(nameID);
     this.#rarity = document.getElementById(rarityID);
     this.#result = document.getElementById(resultID);
@@ -84,8 +87,8 @@ class Search {
   #result;
 
   /**
-   *
-   * @param {["head", "chest", "gloves", "waist", "legs"]} toSelect
+   * Marks a body area as selected for modification.
+   * @param {["head", "chest", "gloves", "waist", "legs"]} toSelect Area to mark.
    */
   select(toSelect) {
     let elements = document.getElementsByClassName(
@@ -166,9 +169,9 @@ class Search {
   }
 
   /**
-   *
-   * @param {{}} record
-   * @returns {String}
+   * Creates a search result card from a returned armor record.
+   * @param {MHW.Loadout} record Requires name, id, defense base, resistances
+   * @returns {String} HTML mini card
    */
   #createMiniCard(record) {
     //TODO -- make this work
@@ -220,9 +223,9 @@ class Search {
   }
 
   /**
-   *
-   * @param {String} warning
-   * @returns {String}
+   * Creates an HTML warning card.
+   * @param {String} warning Text to display.
+   * @returns {String} HTML mini card
    */
   #createWarnCard(warning) {
     const card = document.createElement("div");
@@ -237,24 +240,46 @@ class Search {
 }
 
 class Storage {
+  /**
+   * Checks if a key is stored in persistent memory.
+   * @param {string} slot Key to check.
+   * @returns {boolean} Does data exist?
+   */
   static check(slot) {
-    let loadout = localStorage.getItem(`slot${slot}`);
-    return loadout !== null;
+    let data = localStorage.getItem(`slot${slot}`);
+    return data !== null;
   }
 
-  static saveTo(slot, loadout) {
-    localStorage.setItem(`slot${slot}`, JSON.stringify(loadout));
+  /**
+   * Save an entry to persistent memory.
+   * @param {string} slot Key to write to.
+   * @param {*} data Data to store.
+   */
+  static saveTo(slot, data) {
+    localStorage.setItem(`slot${slot}`, JSON.stringify(data));
     console.log(`Saved loadout to Slot${slot}`);
   }
+
+  /**
+   * Retrieves an entry from peristent memory.
+   * @param {string} slot Key to read from.
+   * @returns {*} Stored value.
+   */
   static loadFrom(slot) {
-    let loadout = localStorage.getItem(`slot${slot}`);
-    if (loadout === null) {
+    let data = localStorage.getItem(`slot${slot}`);
+    if (data === null) {
       throw `Could not load Slot${slot}: No entry found`;
     } else {
-      return JSON.parse(loadout);
+      return JSON.parse(data);
     }
   }
 
+  /**
+   * Saves a loadout to peristent memory.
+   * Assigns a unique id to each entry automatically.
+   * @param {*} name Name to save loadout with.
+   * @param {*} loadout Data to include in the entry.
+   */
   static saveLoadout(name, loadout) {
     let loadouts = this.loadAllLoadouts();
 
@@ -280,6 +305,12 @@ class Storage {
 
     this.saveTo("Loadouts", loadouts);
   }
+
+  /**
+   * Retrieves a single loadout from persistent memory.
+   * @param {Number} id ID of loadout to retrieve.
+   * @returns {{name: String, id: Number, Loadout: MHW.Loadout}} Loadout
+   */
   static loadLoadout(id) {
     let loadouts = this.loadAllLoadouts();
 
@@ -292,6 +323,11 @@ class Storage {
     console.error(`Unable to find ID: ${id}`);
     return undefined;
   }
+
+  /**
+   * Retrieves the list containing all loadouts stored in persistent memory.
+   * @returns {[{name: String, id: Number, Loadout: MHW.Loadout}]} All saved Loadouts.
+   */
   static loadAllLoadouts() {
     let loadouts;
     if (this.check("Loadouts")) {
@@ -301,6 +337,11 @@ class Storage {
     }
     return loadouts;
   }
+
+  /**
+   * Removes a loadout from persistent memory
+   * @param {Number} id ID of loadout to remove
+   */
   static removeLoadout(id) {
     let loadouts = this.loadAllLoadouts();
 
@@ -316,6 +357,9 @@ class Storage {
     this.saveTo("Loadouts", loadouts);
   }
 
+  /**
+   * Clears everything stored in memory.
+   */
   static reset() {
     localStorage.clear();
   }
