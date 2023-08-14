@@ -1,3 +1,5 @@
+// @ts-check
+
 import * as MHW from "./MHWDatatypes.js";
 import { DataBase, Search, Storage } from "./MHWControllers.js";
 
@@ -201,7 +203,9 @@ async function init() {
 
   console.log(Hunter);
 
-  document.addEventListener("DOMContentLoaded", initDOM(Hunter));
+  document.addEventListener("DOMContentLoaded", () => {
+    initDOM(Hunter);
+  });
 }
 
 init();
