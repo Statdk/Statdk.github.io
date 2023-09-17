@@ -148,7 +148,8 @@ input[type="submit"] {
 }
 button:hover,
 button:focus,
-input[type="submit"]:hover input[type="submit"]:focus {
+input[type="submit"]:hover,
+input[type="submit"]:focus {
   background-color: #984eff2d;
 }
 button:active,
