@@ -139,17 +139,20 @@ input[type="number"]:focus {
   outline: var(--color-purple) solid 3px;
 }
 
-button {
+button,
+input[type="submit"] {
   border: 1px solid black;
   border-radius: 0.5em;
   color: var(--color-purple);
   background-color: var(--color-bg);
 }
 button:hover,
-button:focus {
+button:focus,
+input[type="submit"]:hover input[type="submit"]:focus {
   background-color: #984eff2d;
 }
-button:active {
+button:active,
+input[type="submit"]:active {
   color: black;
   background-color: #984effff;
 }
