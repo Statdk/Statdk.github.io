@@ -1,5 +1,3 @@
-// @ts-check
-
 import * as MHW from "./MHWDatatypes.js";
 import { DataBase, Search, Storage } from "./MHWControllers.js";
 

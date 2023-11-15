@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Group 51 Prototype</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link href="./style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="screenWrap" id="screen1">
+      <div class="screen screen1">
+        <div class="detailWindow disabled" id="mthDetail">
+          <div class="closeWindow">
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-x-circle" onclick="closeWindow('mthDetail')"></i>
+          </div>
+          <h1>MTH</h1>
+          <h2>Schedule:</h2>
+          <table>
+            <tr>
+              <th>Monday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+            <tr>
+              <th>Wednesday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+            <tr>
+              <th>Friday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+          </table>
+
+          <h2>Links:</h2>
+          <ul>
+            <li>
+              <a href="http://example.com" target="_blank">example.com</a>
+            </li>
+            <li>
+              <a href="http://example.org" target="_blank">example.org</a>
+            </li>
+          </ul>
+
+          <h2>Open Relations:</h2>
+          <div class="relationsBox">
+            <div
+              class="assignItem mth"
+              onclick="closeOpen('mthDetail', 'assignDetail')"
+            >
+              Homework #5
+            </div>
+          </div>
+        </div>
+
+        <div class="detailWindow disabled" id="wrDetail">
+          <div class="closeWindow">
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-x-circle" onclick="closeWindow('wrDetail')"></i>
+          </div>
+          <h1>WR</h1>
+          <h2>Schedule:</h2>
+          <table>
+            <tr>
+              <th>Tuesday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+            <tr>
+              <th>Thursday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+          </table>
+
+          <h2>Links:</h2>
+          <ul>
+            <li>
+              <a href="http://example.com" target="_blank">example.com</a>
+            </li>
+            <li>
+              <a href="http://example.org" target="_blank">example.org</a>
+            </li>
+          </ul>
+
+          <h2>Open Relations:</h2>
+          <div class="relationsBox">None</div>
+        </div>
+
+        <div class="detailWindow disabled" id="sciDetail">
+          <div class="closeWindow">
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-x-circle" onclick="closeWindow('sciDetail')"></i>
+          </div>
+          <h1>SCI</h1>
+          <h2>Schedule:</h2>
+          <table>
+            <tr>
+              <th>Tuesday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+            <tr>
+              <th>Thursday</th>
+              <td>--:-- to --:--</td>
+            </tr>
+          </table>
+
+          <h2>Links:</h2>
+          <ul>
+            <li>
+              <a href="http://example.com" target="_blank">example.com</a>
+            </li>
+            <li>
+              <a href="http://example.org" target="_blank">example.org</a>
+            </li>
+          </ul>
+
+          <h2>Open Relations:</h2>
+          <div class="relationsBox">None</div>
+        </div>
+
+        <div class="detailWindow disabled" id="assignDetail">
+          <div class="closeWindow assign">
+            <i class="bi bi-x-circle" onclick="closeWindow('assignDetail')"></i>
+          </div>
+          <h1>Edit Assignment</h1>
+          <h2>Title</h2>
+          <input class="assignName" placeholder="Name" />
+
+          <select class="assignClass">
+            <option>Class</option>
+            <option>MTH</option>
+            <option>WR</option>
+            <option>SCI</option>
+          </select>
+
+          <div class="assignGrid">
+            <div class="assignGridItem">
+              <h2>Notify for x days before:</h2>
+              <input type="number" />
+            </div>
+            <div class="assignGridItem">
+              <h2>Notes</h2>
+              <textarea></textarea>
+            </div>
+            <div class="assignGridItem">
+              <h2>Linked Assignments</h2>
+              <div class="assignSearchBox">
+                <div><input type="text" placeholder="Search" /></div>
+                <div>
+                  <input type="radio" name="link" id="Option 1" />
+                  <label for="Option 1">Option</label>
+                </div>
+                <div>
+                  <input type="radio" name="link" id="Option 2" />
+                  <label for="Option 2">Option</label>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div class="assignNewBtnContainer">
+                <i
+                  class="bi bi-plus-circle"
+                  onclick="closeWindow('assignDetail')"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="text-center p-2">Weekly Overview</h1>
+        <div class="actionBar">
+          <i
+            class="bi bi-funnel actionable"
+            id="filterBtn"
+            onclick="cycleFilter()"
+          ></i>
+          <i class="bi bi-arrow-left-circle"></i>
+          <i class="bi bi-arrow-right-circle"></i>
+        </div>
+        <table class="week">
+          <tr>
+            <th>
+              Mon
+              <div class="weekDay">1</div>
+            </th>
+            <th>
+              Tue
+              <div class="weekDay">2</div>
+            </th>
+            <th>
+              Wed
+              <div class="weekDay">3</div>
+            </th>
+            <th>
+              Thu
+              <div class="weekDay">4</div>
+            </th>
+            <th>
+              Fri
+              <div class="weekDay">5</div>
+            </th>
+            <th>
+              Sat
+              <div class="weekDay">6</div>
+            </th>
+            <th>
+              Sun
+              <div class="weekDay">7</div>
+            </th>
+          </tr>
+          <tr class="classList">
+            <td>
+              <div class="classItem mth" onclick="openWindow('mthDetail')">
+                MTH
+              </div>
+            </td>
+            <td>
+              <div class="classItem wr" onclick="openWindow('wrDetail')">
+                WR
+              </div>
+              <div class="classItem sci" onclick="openWindow('sciDetail')">
+                SCI
+              </div>
+            </td>
+            <td>
+              <div class="classItem mth" onclick="openWindow('mthDetail')">
+                MTH
+              </div>
+            </td>
+            <td>
+              <div class="classItem wr" onclick="openWindow('wrDetail')">
+                WR
+              </div>
+              <div class="classItem sci" onclick="openWindow('sciDetail')">
+                SCI
+              </div>
+            </td>
+            <td>
+              <div class="classItem mth" onclick="openWindow('mthDetail')">
+                MTH
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr class="assignList">
+            <td>
+              <div class="assignItem mth" onclick="openWindow('assignDetail')">
+                HW 5
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+
+        <div class="newBtnContainer">
+          <i class="bi bi-plus-circle" onclick="openWindow('assignDetail')"></i>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const filters = [null, "mth", "wr", "sci"];
+    const filterMap = {
+      mth: "turquoise",
+      wr: "orangered",
+      sci: "greenyellow",
+    };
+    let filterIndex = 0;
+
+    function cycleFilter() {
+      let filterBtn = document.getElementById("filterBtn");
+
+      filterIndex++;
+
+      if (filterIndex > filters.length - 1) {
+        filterIndex = 0;
+
+        filterBtn.style.color = "#d4d4d1";
+      }
+
+      filterBtn.style.color = filterMap[filters[filterIndex]];
+
+      let classItems = document.getElementsByClassName("classItem");
+      let assignItems = document.getElementsByClassName("assignItem");
+
+      applyFilter(classItems);
+      applyFilter(assignItems);
+    }
+
+    function applyFilter(elementList) {
+      for (const element of elementList) {
+        if (
+          !element.classList.contains(filters[filterIndex]) &&
+          filterIndex !== 0
+        ) {
+          element.classList.add("disabled");
+          console.log("Added disabled to: " + element.classList.toString());
+        } else {
+          element.classList.remove("disabled");
+          console.log(
+            "Did not add disabled to: " + element.classList.toString()
+          );
+        }
+      }
+    }
+
+    function openWindow(id) {
+      let element = document.getElementById(id);
+      element.classList.remove("disabled");
+      console.log(`Opened Window: ${id}`);
+    }
+
+    function closeWindow(id) {
+      let element = document.getElementById(id);
+      element.classList.add("disabled");
+      console.log(`Closed Window: ${id}`);
+    }
+
+    function closeOpen(closeID, openID) {
+      closeWindow(closeID);
+      openWindow(openID);
+    }
+  </script>
+</html>
