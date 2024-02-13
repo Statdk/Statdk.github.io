@@ -49,6 +49,9 @@
         "KIvh9wSLaq0",
         "2qR2Xp53e6w",
         "QcXO-fv_TS4",
+        "Eq5O2W3Uq38",
+        "GPIn1BDCKnU",
+        "dQw4w9WgXcQ", // rickroll
       ];
 
       function resetCookie() {
@@ -103,24 +106,21 @@
 
         const iframe = document.getElementById("ytEmbed");
 
-        // iframe.setAttribute(
-        //   "src",
-        //   `https://www.youtube.com/embed/${THELIST[selection]}?`
-        // );
         console.log(
           `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`
         );
 
-        // window
-        //   .open(
-        //     `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`
-        //   )
-        //   .focus();
-
         cookie.watched.push(selection);
         document.cookie = JSON.stringify(cookie);
 
-        window.location.href = `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`;
+        // Controls for iframe
+        iframe.setAttribute(
+          "src",
+          `https://www.youtube.com/embed/${THELIST[selection]}?`
+        );
+
+        // Redirect to random
+        // window.location.href = `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`;
       }
 
       document.addEventListener("DOMContentLoaded", () => {
