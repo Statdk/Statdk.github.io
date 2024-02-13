@@ -35,6 +35,20 @@
         "Mz-GZOQYtYY",
         "IIx71XkN9Oo",
         "v5pmzj36Ves",
+        "-nIJdHn1FFE",
+        "IvcuBaujzIg",
+        "iyvQ48V7LAQ",
+        "fGTXTzAvthM",
+        "nlsiooJ2ALU",
+        "OVkQLl2Ru5s",
+        "SKByTOTpVaM",
+        "ZPrQ5jwRbgM",
+        "O6jjb2w5das",
+        "Lv89FZpKd18",
+        "QOJFaXs5p8Y",
+        "KIvh9wSLaq0",
+        "2qR2Xp53e6w",
+        "QcXO-fv_TS4",
       ];
 
       function resetCookie() {
@@ -89,14 +103,24 @@
 
         const iframe = document.getElementById("ytEmbed");
 
-        iframe.setAttribute(
-          "src",
-          `https://www.youtube.com/embed/${THELIST[selection]}?autoplay=1`
+        // iframe.setAttribute(
+        //   "src",
+        //   `https://www.youtube.com/embed/${THELIST[selection]}?`
+        // );
+        console.log(
+          `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`
         );
-        console.log(`https://www.youtube.com/watch?v=${THELIST[selection]}`);
+
+        // window
+        //   .open(
+        //     `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`
+        //   )
+        //   .focus();
 
         cookie.watched.push(selection);
         document.cookie = JSON.stringify(cookie);
+
+        window.location.href = `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`;
       }
 
       document.addEventListener("DOMContentLoaded", () => {
