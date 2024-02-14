@@ -115,13 +115,13 @@
         document.cookie = JSON.stringify(cookie);
 
         // Controls for iframe
-        iframe.setAttribute(
-          "src",
-          `https://www.youtube.com/embed/${THELIST[selection]}?autoplay=1`
-        );
+        // iframe.setAttribute(
+        //   "src",
+        //   `https://www.youtube.com/embed/${THELIST[selection]}?autoplay=1`
+        // );
 
         // Redirect to random
-        // window.location.href = `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`;
+        window.location.href = `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`;
       }
 
       document.addEventListener("DOMContentLoaded", () => {
