@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html style="background-color: black">
+  <head>
+    <title>It's Funny</title>
+    <style>
+      * {
+        margin: none;
+        padding: none;
+      }
+      iframe {
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <iframe
+      id="ytEmbed"
+      width="100%"
+      src=""
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      autoplay="1"
+      allowfullscreen
+    ></iframe>
+    <script>
+      const THELIST = [
+        "t5EjBelU-m0",
+        "ujcjnEO-YKU",
+        "22_tSN0SKdY",
+        "yata29OzKIA",
+        "Mz-GZOQYtYY",
+        "IIx71XkN9Oo",
+        "v5pmzj36Ves",
+        "-nIJdHn1FFE",
+        "IvcuBaujzIg",
+        "iyvQ48V7LAQ",
+        "fGTXTzAvthM",
+        "nlsiooJ2ALU",
+        "OVkQLl2Ru5s",
+        "SKByTOTpVaM",
+        "ZPrQ5jwRbgM",
+        "O6jjb2w5das",
+        "Lv89FZpKd18",
+        "QOJFaXs5p8Y",
+        "KIvh9wSLaq0",
+        "2qR2Xp53e6w",
+        "QcXO-fv_TS4",
+        "Eq5O2W3Uq38",
+        "GPIn1BDCKnU",
+        "dQw4w9WgXcQ", // rickroll
+        "VAC-5BQnuXI",
+      ];
+
+      function resetCookie() {
+        const rawCookie = JSON.stringify({ watched: [] });
+        document.cookie = rawCookie;
+      }
+
+      function checkCookie() {
+        let cookie = document.cookie;
+
+        try {
+          if (cookie == undefined || cookie == "") {
+            resetCookie();
+            return;
+          }
+
+          let cookedie = JSON.parse(cookie);
+          if (cookedie.watched.length >= THELIST.length) {
+            console.log("Reset length");
+            resetCookie();
+            return;
+          }
+        } catch (error) {
+          console.error(`Cookie error: ${error}\n${cookie}`);
+          resetCookie();
+        }
+      }
+
+      function getVideo() {
+        let cookie = JSON.parse(document.cookie);
+
+        console.log(cookie);
+
+        let selection;
+        while (true) {
+          let maybe = Math.round((Math.random() * 1000) % (THELIST.length - 1));
+          console.log(maybe);
+
+          for (const i of cookie.watched) {
+            if (maybe == i) {
+              console.log(`${maybe} == ${i}`);
+              maybe = -1;
+              break;
+            }
+          }
+          if (maybe == -1) continue;
+          selection = maybe;
+          break;
+        }
+
+        console.log(`Selected entry ${selection}`);
+
+        const iframe = document.getElementById("ytEmbed");
+
+        console.log(
+          `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`
+        );
+
+        cookie.watched.push(selection);
+        document.cookie = JSON.stringify(cookie);
+
+        // Controls for iframe
+        // iframe.setAttribute(
+        //   "src",
+        //   `https://www.youtube.com/embed/${THELIST[selection]}?autoplay=1`
+        // );
+
+        // Redirect to random
+        window.location.href = `https://www.youtube.com/watch?v=${THELIST[selection]}?autoplay=1`;
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        checkCookie();
+        getVideo();
+      });
+    </script>
+  </body>
+</html>
