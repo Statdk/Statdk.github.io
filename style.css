@@ -110,6 +110,12 @@ a:active {
   border-bottom: 2px solid var(--color-purple);
 }
 
+.repoEmbed {
+  border: black 1px solid;
+  /* border-radius: 15px; */
+  box-shadow: 0 0 10px 1px #000000aa;
+}
+
 footer {
   color: var(--color-text-bg);
   width: fit-content;
