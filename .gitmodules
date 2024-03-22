@@ -1,0 +1,3 @@
+[submodule "MHWLoadout"]
+	path = MHWLoadout
+	url = https://github.com/Statdk/MHW-Loadouter.git
