@@ -1,1 +1,3 @@
 A poorly built website intended for personal use.
+
+Perform `git submodule update --init --recursive` to update submodules after cloning
