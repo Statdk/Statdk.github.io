@@ -17,7 +17,8 @@ html,
 body {
   color: var(--color-text-fg);
   background-color: var(--color-bg);
-  font-family: Consolas;
+  /* font-family: Consolas; */
+  font-family: "Iosevka Web";
 }
 
 h1 {
